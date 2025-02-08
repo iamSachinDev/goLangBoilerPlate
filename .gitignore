@@ -1,0 +1,39 @@
+# Go-related
+*.exe
+*.out
+*.test
+
+# Dependency files (can be regenerated)
+vendor/
+go.sum
+go.mod
+
+# Logs and Debugging
+*.log
+trace.out
+*.prof
+
+# Environment files
+.env
+.env.*
+
+# Compiled binary
+/bin/
+/build/
+/dist/
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Git-specific files
+.git/
+.DS_Store
+
+# Temporary files
+*.tmp
+*.cache
+*.log
