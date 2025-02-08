@@ -14,10 +14,10 @@ func SecurityMiddleware() gin.HandlerFunc {
 		ContentSecurityPolicy: "default-src 'self';", // Restrict content sources
 		ReferrerPolicy:        "no-referrer",         // Control referrer information
 		FeaturePolicy:         "vibrate 'none';",     // Limit browser features
-		SSLRedirect:           true,                  // Redirect HTTP to HTTPS
-		STSSeconds:            31536000,              // HSTS max-age in seconds
-		STSIncludeSubdomains:  true,                  // Apply HSTS to subdomains
-		STSPreload:            true,                  // Allow HSTS preload
+		// SSLRedirect:           true,
+		STSSeconds:           31536000, // HSTS max-age in seconds
+		STSIncludeSubdomains: true,     // Apply HSTS to subdomains
+		STSPreload:           true,     // Allow HSTS preload
 	})
 
 	return func(c *gin.Context) {
