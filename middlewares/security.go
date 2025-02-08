@@ -26,7 +26,6 @@ func SecurityMiddleware() gin.HandlerFunc {
 			c.AbortWithStatus(400) // Bad request if security headers can't be applied
 			return
 		}
-
 		c.Next()
 	}
 }

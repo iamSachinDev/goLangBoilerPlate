@@ -8,16 +8,18 @@ import (
 )
 
 // InitRoutes initializes all routes
-func InitRoutes(r *gin.Engine) {
-	println("InitRoutes started")
+func InitRoutes(route *gin.Engine) {
 
-	// Root route
-	r.GET("/", func(c *gin.Context) { controllers.DefaultPage(c) })
+	// Group for API Home and Health Check
+	DefaultApis := route.Group("default")
+	{
+		// Home Page
+		DefaultApis.GET("/", func(c *gin.Context) { controllers.DefaultPage(c) })
+		// Health-check route
+		DefaultApis.GET("/health-check", func(c *gin.Context) { controllers.HealthCheck(c) })
+	}
 
-	// Health-check route
-	r.GET("/health-check", func(c *gin.Context) { controllers.HealthCheck(c) })
-
-	r.NoRoute(func(c *gin.Context) {
+	route.NoRoute(func(c *gin.Context) {
 		println("Fallback route triggered for:", c.Request.URL.Path)
 		c.JSON(http.StatusNotFound, gin.H{"message": "Route not found"})
 	})
